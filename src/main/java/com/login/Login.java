@@ -1,14 +1,12 @@
 package com.login;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-
 import com.login.dao.LoginDao;
 
 /**
@@ -26,7 +24,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at : ").append(request.getContextPath());
 
 		String uname = request.getParameter("uname");
 		String password = request.getParameter("psw");
@@ -39,9 +37,13 @@ public class Login extends HttpServlet {
 			// Make JDBC connection and check user is present or not. If user present go to
 			// welcome page else give stay to login page
 			response.sendRedirect("Web-Pages/welcome.jsp");
-		}else {
-			response.sendRedirect("/LoginModule");
+		} else {
+			response.setContentType("text/html");
+			request.setAttribute("error", "true");
+			request.getRequestDispatcher("Web-Pages/login.jsp").include(request, response);
+//			response.sendRedirect("/LoginModule");
 		}
+
 	}
 
 	/**
