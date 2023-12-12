@@ -15,7 +15,7 @@
 
 	<div class="modal">
 
-		<form class="modal-content animate" action="Login" method="post">
+		<form class="modal-content animate" action="/LoginModule/Login" method="post">
 			<div class="imgcontainer">
 				<img src="/LoginModule/Image-Files/user.png" alt="Avatar"
 					class="avatar">
